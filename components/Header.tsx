@@ -7,9 +7,8 @@ export default function Header() {
   return (
     <header className="py-8 xl:py-12">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Title visible only on larger screens */}
         <Link href="/" className="text-xl font-bold hidden xl:block">
-          My Portfolio
+          XEROON.
         </Link>
 
         {/* Desktop Navbar */}
@@ -27,7 +26,7 @@ export default function Header() {
       <div className="xl:hidden">
         <div className="flex flex-col items-center">
           <Link href="/" className="text-xl font-bold mb-4">
-            My Portfolio
+            XEROON.
           </Link>
           <MobileNav />
         </div>
