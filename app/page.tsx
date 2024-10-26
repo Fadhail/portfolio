@@ -14,10 +14,59 @@ import { motion } from "framer-motion";
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero */}
+      {/* Hero Section */}
       <main className="pt-16 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+            {/* Avatar comes first on mobile */}
+            <motion.div
+              className="relative w-40 h-40 md:w-64 md:h-64 mx-auto md:mx-0 order-first md:order-last"
+              initial={{ opacity: 0, scale: 0.5, y: 100 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0.8,
+                ease: "easeOut",
+              }}
+            >
+              <motion.div
+                className="absolute inset-0 bg-cyan-600/10 rounded-full"
+                animate={{
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute inset-4 bg-cyan-600/20 rounded-full"
+                animate={{
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.2,
+                }}
+              />
+              <motion.div
+                className="relative w-full h-full rounded-full overflow-hidden border-4 border-cyan-600"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src="/images/pict.png"
+                  alt="Avatar"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 256px, 384px"
+                />
+              </motion.div>
+            </motion.div>
+
             {/* Content */}
             <motion.div
               className="flex-1 text-center md:text-left"
@@ -82,60 +131,11 @@ export default function Home() {
                 </Link>
               </motion.div>
             </motion.div>
-
-            {/* Avatar */}
-            <motion.div
-              className="relative w-40 h-40 md:w-64 md:h-64 mx-auto md:mx-0"
-              initial={{ opacity: 0, scale: 0.5, y: 100 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 0.8,
-                ease: "easeOut",
-              }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-cyan-600/10 rounded-full"
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <motion.div
-                className="absolute inset-4 bg-cyan-600/20 rounded-full"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.2,
-                }}
-              />
-              <motion.div
-                className="relative w-full h-full rounded-full overflow-hidden border-4 border-cyan-600"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src="/images/pict.png"
-                  alt="Avatar"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 256px, 384px"
-                />
-              </motion.div>
-            </motion.div>
           </div>
         </div>
       </main>
 
-      {/* Projects */}
+      {/* Projects Section */}
       <motion.section
         className="py-16 px-4"
         initial={{ opacity: 0, y: 50 }}
