@@ -4,23 +4,26 @@ import {
   ArrowRightIcon,
   Link2Icon,
   LinkedinIcon,
-  TwitterIcon,
+  GithubIcon,
   InstagramIcon,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import GitHubContributions from "@/components/GitHubContributions";
 
 export default function Home() {
+  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME;
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <main className="pt-16 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-            {/* Avatar comes first on mobile */}
+            {/* Avatar */}
             <motion.div
-              className="relative w-40 h-40 md:w-64 md:h-64 mx-auto md:mx-0 order-first md:order-last"
+              className="relative w-48 h-48 md:w-96 md:h-96 mx-auto md:mx-0 order-first md:order-last"
               initial={{ opacity: 0, scale: 0.5, y: 100 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{
@@ -108,14 +111,23 @@ export default function Home() {
                 <a href="#" className="hover:text-gray-600 transition-colors">
                   <Link2Icon size={24} />
                 </a>
-                <a href="#" className="hover:text-gray-600 transition-colors">
+                <a
+                  href="https://www.instagram.com/moch.fadhail/"
+                  className="hover:text-gray-600 transition-colors"
+                >
                   <InstagramIcon size={24} />
                 </a>
-                <a href="#" className="hover:text-gray-600 transition-colors">
+                <a
+                  href="https://www.linkedin.com/in/mochammad-fadhail-70450425b/"
+                  className="hover:text-gray-600 transition-colors"
+                >
                   <LinkedinIcon size={24} />
                 </a>
-                <a href="#" className="hover:text-gray-600 transition-colors">
-                  <TwitterIcon size={24} />
+                <a
+                  href="https://github.com/Fadhail"
+                  className="hover:text-gray-600 transition-colors"
+                >
+                  <GithubIcon size={24} />
                 </a>
               </motion.div>
               <motion.div
@@ -127,15 +139,26 @@ export default function Home() {
                   href="/about"
                   className="inline-flex items-center text-lg hover:gap-4 gap-2 transition-all"
                 >
-                  View About Me <ArrowRightIcon size={20} />
+                  Download CV <ArrowRightIcon size={20} />
                 </Link>
               </motion.div>
             </motion.div>
           </div>
         </div>
+
+        {/* Contributions */}
+        <div className="flex justify-center mt-8">
+          {username ? (
+            <GitHubContributions username={username} />
+          ) : (
+            <p className="text-center mt-4 text-gray-600">
+              Please set your GitHub username in .env.local
+            </p>
+          )}
+        </div>
       </main>
 
-      {/* Projects Section */}
+      {/* Projects */}
       <motion.section
         className="py-16 px-4"
         initial={{ opacity: 0, y: 50 }}
