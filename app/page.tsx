@@ -17,57 +17,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero */}
       <main className="pt-16 pb-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
             {/* Avatar */}
             <motion.div
-              className="relative w-48 h-48 md:w-96 md:h-96 mx-auto md:mx-0 order-first md:order-last"
-              initial={{ opacity: 0, scale: 0.5, y: 100 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 0.8,
-                ease: "easeOut",
-              }}
+              className="relative w-48 h-48 md:w-96 md:h-96 mx-auto md:mx-0 order-first md:order-last rounded-full overflow-hidden border-4 border-cyan-600 shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              initial={{ scale: 0, rotate: 180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: "spring", duration: 1.5, bounce: 0.1 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-cyan-600/10 rounded-full"
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+              <Image
+                src="/images/profile.jpg"
+                alt="Avatar"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 256px, 320px"
               />
-              <motion.div
-                className="absolute inset-4 bg-cyan-600/20 rounded-full"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.2,
-                }}
-              />
-              <motion.div
-                className="relative w-full h-full rounded-full overflow-hidden border-4 border-cyan-600"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src="/images/pict.png"
-                  alt="Avatar"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 256px, 384px"
-                />
-              </motion.div>
             </motion.div>
 
             {/* Content */}
@@ -83,7 +51,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.9 }}
               >
-                INFORMATICS ENGINEERING STUDENT
+                COMPUTER ENGINEERING STUDENT
               </motion.span>
               <motion.h1
                 className="text-4xl md:text-6xl font-bold mb-6"
@@ -99,8 +67,8 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1 }}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                consequuntur, aliquam sint.
+                A Computer Engineering student with a strong interest in the
+                world of technology.
               </motion.p>
               <motion.div
                 className="flex space-x-6 justify-center md:justify-start mb-8"
@@ -139,7 +107,7 @@ export default function Home() {
                   href="/about"
                   className="inline-flex items-center text-lg hover:gap-4 gap-2 transition-all"
                 >
-                  Download CV <ArrowRightIcon size={20} />
+                  View About Me <ArrowRightIcon size={20} />
                 </Link>
               </motion.div>
             </motion.div>
@@ -147,20 +115,27 @@ export default function Home() {
         </div>
 
         {/* Contributions */}
-        <div className="flex justify-center mt-8">
-          {username ? (
-            <GitHubContributions username={username} />
-          ) : (
-            <p className="text-center mt-4 text-gray-600">
-              Please set your GitHub username in .env.local
-            </p>
-          )}
-        </div>
+        <motion.div
+          className="text-4xl md:text-6xl font-bold mb-6 mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          <div className="flex justify-center mt-8">
+            {username ? (
+              <GitHubContributions username={username} />
+            ) : (
+              <p className="text-center mt-4 text-gray-60">
+                Please set your GitHub username in .env.local
+              </p>
+            )}
+          </div>
+        </motion.div>
       </main>
 
       {/* Projects */}
       <motion.section
-        className="py-16 px-4"
+        className="py-8 px-4"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
@@ -191,6 +166,12 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <Link
+            href="/projects"
+            className="mt-8 inline-flex items-center text-lg hover:gap-4 gap-2 transition-all"
+          >
+            View More <ArrowRightIcon size={20} />
+          </Link>
         </div>
       </motion.section>
     </div>
