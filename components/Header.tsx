@@ -1,3 +1,5 @@
+// components/Header.js
+
 "use client";
 
 import Link from "next/link";
@@ -17,7 +19,7 @@ export default function Header() {
           </Link>
           <div className="flex items-center gap-8">
             <Navbar />
-            <Link href="mailto:mochammadfadhail2@gmail.com">
+            <Link href="/contact">
               <Button className="bg-cyan-600 hover:bg-cyan-700 px-6 rounded">
                 Contact Me
               </Button>
