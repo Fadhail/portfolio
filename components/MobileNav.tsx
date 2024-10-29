@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { MenuIcon, XIcon } from "lucide-react"; // Ensure you have the lucide-react library installed
 
 const links = [
   { name: "Home", path: "/" },
@@ -10,26 +11,39 @@ const links = [
   { name: "Contact", path: "/contact" },
 ];
 
-export default function Navbar() {
-  const pathname = usePathname();
+export default function MobileNav() {
+  const [isOpen, setIsOpen] = useState(false); // State for mobile menu visibility
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <nav className="flex justify-center mt-2">
-      <div className="bg-gray-800 text-white rounded-full px-6 py-3 space-x-8">
-        {links.map((link, index) => {
-          const isActive = pathname === link.path;
-          return (
-            <Link
-              key={index}
-              href={link.path}
-              className={`${
-                isActive ? "text-cyan-400 border-b-2" : ""
-              } hover:text-cyan-400 transition duration-300`}
-            >
-              {link.name}
-            </Link>
-          );
-        })}
+    <nav className="flex justify-between items-center p-4 bg-transparent text-white fixed top-0 left-0 right-0 z-50">
+      {" "}
+      {/* Added fixed positioning */}
+      {/* Title or Brand Name */}
+      <div className="text-lg font-bold">XEROON.</div>
+      {/* Hamburger Icon */}
+      <div onClick={toggleMenu} className="cursor-pointer">
+        {isOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+      </div>
+      {/* Menu Links */}
+      <div
+        className={`${
+          isOpen ? "block" : "hidden"
+        } absolute top-16 left-0 w-full bg-gray-800 bg-opacity-90 md:hidden`} // Set background to gray with opacity
+      >
+        {links.map((link, index) => (
+          <Link
+            key={index}
+            href={link.path}
+            className="block py-2 px-4 text-center hover:bg-gray-700 transition duration-300"
+            onClick={() => setIsOpen(false)} // Close menu on link click
+          >
+            {link.name}
+          </Link>
+        ))}
       </div>
     </nav>
   );

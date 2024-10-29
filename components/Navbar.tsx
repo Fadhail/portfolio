@@ -7,7 +7,6 @@ const links = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
 ];
 
 export default function Navbar() {
@@ -22,8 +21,10 @@ export default function Navbar() {
             key={index}
             href={link.path}
             className={`${
-              isActive ? "text-cyan-400 border-b-2" : ""
-            } hover:text-cyan-400 transition duration-300`}
+              isActive
+                ? "text-cyan-400 border-b-2 border-cyan-400"
+                : "text-white hover:text-cyan-400 transition-colors duration-300"
+            }`}
           >
             {link.name}
           </Link>

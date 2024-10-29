@@ -8,19 +8,18 @@ import { motion } from "framer-motion";
 
 export default function Header() {
   return (
-    <header className="py-8 xl:py-12">
+    <header className="absolute w-full py-4 bg-transparent backdrop-blur-sm z-10">
       <div className="container mx-auto">
         {/* Desktop Layout */}
         <div className="hidden xl:flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold">
+          <Link href="/" className="text-xl font-bold text-white">
             XEROON.
           </Link>
-
           <div className="flex items-center gap-8">
             <Navbar />
-            <Link href="/contact">
-              <Button className="bg-cyan-600 hover:bg-cyan-900 rounded">
-                Hire me
+            <Link href="mailto:mochammadfadhail2@gmail.com">
+              <Button className="bg-cyan-600 hover:bg-cyan-700 px-6 rounded">
+                Contact Me
               </Button>
             </Link>
           </div>
@@ -32,13 +31,11 @@ export default function Header() {
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            transition: { duration: 1, ease: "easeInOut" },
+            transition: { duration: 0.5, ease: "easeInOut" },
           }}
         >
-          <div className="flex flex-col items-center">
-            <div className="fixed z-10 top-0 left-0 right-0">
-              <MobileNav />
-            </div>
+          <div className="fixed z-10 top-2 left-0 right-0">
+            <MobileNav />
           </div>
         </motion.div>
       </div>

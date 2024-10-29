@@ -15,6 +15,19 @@ export default function About() {
   const [lineRef, lineInView] = useInView();
 
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+
+      document.documentElement.style.setProperty("--cursor-x", `${x}%`);
+      document.documentElement.style.setProperty("--cursor-y", `${y}%`);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {
@@ -28,18 +41,12 @@ export default function About() {
   }, [controls, inView, lineControls, lineInView]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center">
+    <div className="gradient-bg min-h-screen flex flex-col items-center">
       {/* Hero Section */}
       <main className="pt-24 pb-16 px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
           {/* Avatar */}
-          <motion.div
-            className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-cyan-600 shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            initial={{ scale: 0, rotate: 180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", duration: 1.5, bounce: 0.1 }}
-          >
+          <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-cyan-600 shadow-lg">
             <Image
               src="/images/profile.jpg"
               alt="Avatar"
@@ -47,7 +54,7 @@ export default function About() {
               className="object-cover"
               sizes="(max-width: 768px) 256px, 320px"
             />
-          </motion.div>
+          </div>
 
           {/* Content */}
           <div className="flex flex-col text-center md:text-left">
@@ -59,8 +66,7 @@ export default function About() {
               always eager to learn new things, especially those that can
               enhance my understanding of programming and technology.
               Additionally, I am interested in exploring how technology can be
-              applied to improve efficiency and productivity in various
-              sectors."
+              applied to improve efficiency and productivity in various sectors.
             </p>
             <Link
               href="/about"
@@ -146,26 +152,16 @@ export default function About() {
           Skills
         </h2>
         <div className="flex flex-wrap justify-center gap-4">
-          {[
-            "JavaScript",
-            "React",
-            "Next.js",
-            "TypeScript",
-            "CSS",
-            "HTML",
-            "SQL",
-            "Python",
-            "Flask",
-            "PHP",
-            "Laravel",
-          ].map((skill, index) => (
-            <span
-              key={index}
-              className="bg-cyan-100 text-cyan-800 font-medium py-2 px-4 rounded-lg shadow-md"
-            >
-              {skill}
-            </span>
-          ))}
+          {["HTML", "CSS", "JavaScript", "PHP", "Python", "C#", "SQL"].map(
+            (skill, index) => (
+              <span
+                key={index}
+                className="bg-cyan-100 text-cyan-800 font-medium py-2 px-4 rounded-lg shadow-md"
+              >
+                {skill}
+              </span>
+            )
+          )}
         </div>
       </section>
 

@@ -7,3 +7,21 @@
     @apply font-primary bg-primary text-white leading-loose;
   }
 }
+
+:root {
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+}
+
+.gradient-bg {
+  background: radial-gradient(
+    circle at var(--cursor-x) var(--cursor-y),
+    #1e3a8a,
+    #000000
+  );
+  transition: background-position 0.05s;
+}
+
+.main-content {
+  padding-top: 60px; /* Adjust this value based on your nav height */
+}
