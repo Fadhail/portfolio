@@ -64,8 +64,10 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1 }}
               >
-                Hello I'm <br /> <span className="text-cyan-600">Fadhail</span>
+                Hello I&apos;m <br />{" "}
+                <span className="text-cyan-600">Fadhail</span>
               </motion.h1>
+
               <motion.p
                 className="text-lg md:text-2xl text-gray-600 max-w-md md:max-w-2xl mb-4 mx-auto md:mx-0"
                 initial={{ opacity: 0, y: 20 }}
