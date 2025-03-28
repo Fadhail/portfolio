@@ -35,28 +35,30 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className="gradient-bg min-h-screen flex items-center justify-center">
-      <section className="w-full max-w-6xl mx-auto px-4">
+    <div className="gradient-bg min-h-screen flex flex-col items-center justify-start pt-[5rem] md:pt-[7rem]">
+      {/* Increased padding-top to prevent overlap */}
+
+      <motion.h1
+        className="text-4xl md:text-5xl font-bold text-center mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        My Projects
+      </motion.h1>
+
+      <section className="w-full max-w-6xl mx-auto px-4 relative">
         <motion.div
           className="space-y-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            My Projects
-          </motion.h1>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                className="bg-white/80 backdrop-blur-sm shadow-lg rounded-lg p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-white/80 backdrop-blur-md shadow-lg rounded-lg p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 * (index + 1) }}
@@ -77,6 +79,8 @@ const Projects: React.FC = () => {
                 </div>
                 <a
                   href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-cyan-600 hover:text-cyan-800 mt-5 inline-block font-semibold transition duration-300"
                 >
                   View Project &rarr;
