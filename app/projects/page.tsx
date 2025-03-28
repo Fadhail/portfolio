@@ -8,9 +8,16 @@ const projects = [
     title: "RFID Attendance System",
     description:
       "The RFID Attendance System is a web-based application designed to streamline the attendance tracking process using Radio Frequency Identification (RFID) technology. This system allows users to mark their attendance effortlessly by simply scanning RFID tags.",
-    techStack: ["PHP", "SQL", "C++"],
+    techStack: ["PHP", "SQL", "C++", "CSS"],
     link: "https://github.com/Fadhail/Absenza",
   },
+  {
+    title: "Face Recognition Attendance System",
+    description:
+      "This project is a real-time attendance system that uses Face Recognition with TensorFlow.js to identify and verify users.",
+    techStack: ["PHP", "JavaScript", "CSS"],
+    link: "https://github.com/Fadhail/face-recognition-attendance-system",
+  }
 ];
 
 const Projects: React.FC = () => {

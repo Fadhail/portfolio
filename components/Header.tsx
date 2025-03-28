@@ -19,11 +19,11 @@ export default function Header() {
           </Link>
           <div className="flex items-center gap-8">
             <Navbar />
-            <Link href="/contact">
+            {/* <Link href="/contact">
               <Button className="bg-cyan-600 hover:bg-cyan-700 px-6 rounded">
                 Contact Me
               </Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
 
