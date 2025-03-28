@@ -5,7 +5,6 @@
 import Link from "next/link";
 import Navbar from "./Navbar";
 import MobileNav from "./MobileNav";
-import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 
 export default function Header() {
